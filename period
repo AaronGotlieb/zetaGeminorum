@@ -7,16 +7,15 @@ vmag[3] = 4.09
 vmag[4] = 4.13
 vmag[5] = 3.84
 day = [0,15,21,28,29,43]
-
-;plot, day,vmag, psym = 2, xrange = [-1,45], yrange = [-1,7]
-;print, day
+;above creates array for days and magnintudes as calculated by ds9
 daytmp = findgen(6)
-period = 10
+period = 10 ;variable to be modified in order to best estimate the period of the start
+;note, the current value ten is the most accurate period we came up with
 
-for i = 0, 5 do begin
+for i = 0, 5 do begin ;first for loop to iterate five times for each magnintude value
   daytmp[i] = day[i]
-  while daytmp[i] gt period do begin
-    daytmp[i] = daytmp[i] - period
+  while daytmp[i] gt period do begin ; second loop that runs as long as the day > the period
+    daytmp[i] = daytmp[i] - period ; subtracts off period so that each value will have the same period day
     endwhile
   endfor
 
