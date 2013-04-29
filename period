@@ -1,0 +1,26 @@
+pro period
+vmag = dblarr(6)
+vmag[0] = 4.03
+vmag[1] = 3.82
+vmag[2] = 3.96
+vmag[3] = 4.09
+vmag[4] = 4.13
+vmag[5] = 3.84
+day = [0,15,21,28,29,43]
+
+;plot, day,vmag, psym = 2, xrange = [-1,45], yrange = [-1,7]
+;print, day
+daytmp = findgen(6)
+period = 10
+
+for i = 0, 5 do begin
+  daytmp[i] = day[i]
+  while daytmp[i] gt period do begin
+    daytmp[i] = daytmp[i] - period
+    endwhile
+  endfor
+
+print, daytmp
+print, day
+plot, daytmp,vmag, psym = 2, xrange = [-1,period], yrange = [3.8,4.2];, ystyle = 1
+end
